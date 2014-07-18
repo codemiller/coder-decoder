@@ -4,10 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Coder Decoder: Functional Programmer Lingo Explained, with Pictures</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="author" content="Katie Miller">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -15,7 +14,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -34,325 +33,292 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+        <style>
+            .what { background: #b3b3dc; margin-bottom: 30px !important; }
+            .what:before { content: "WHAT: "; font-weight: bold; }
+            .why { background: #4d4dae; color: white; }
+            .why:before { content: "WHY: "; font-weight: bold; }
+            .funky { width: 1200px; height: 373px; max-width: 100% !important; max-height: 100% !important; }
+            .funkym { width: 1200px; height: 345px; max-width: 100% !important; max-height: 100% !important; }
+            .highlight-blue .current-fragment { background-color: #3333FF !important; }
+            .highlight-green .current-fragment { background-color: #005A1E !important; }
+            .highlight-purple .current-fragment { background-color: #8A2BE2 !important; }
+            .reveal .slides section .fragment.highlight-bg-green,
+            .reveal .slides section .fragment.highlight-bg-blue,
+            .reveal .slides section .fragment.highlight-bg-purple {
+                opacity: 1;
+            }
+            .reveal .slides section .fragment.highlight-bg-green.visible {
+                background-color: #005A1E !important;
+            }
+            .reveal .slides section .fragment.highlight-bg-blue.visible {
+                background-color: #3333FF !important;
+            }
+            .reveal .slides section .fragment.highlight-bg-purple.visible {
+                background-color: #8A2BE2 !important;
+            }
+            .reveal .slides section .fragment.appear {
+                opacity: 0; display: none;  
+            }
+            .reveal .slides section .fragment.appear.visible {
+                opacity: 1; display: inline-block;  
+            }
+            .reveal .slides section .fragment.disappear {
+                opacity: 1;
+            }
+            .reveal .slides section .fragment.disappear.visible {
+                opacity: 0; display: none;
+            }
+            .reveal .slides section .fragment.marker {
+                opacity: 1;
+            }
+            .reveal .slides section .fragment.marker.visible {
+                opacity: 1;
+            }
+        </style>
 	</head>
 
 	<body>
 
 		<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
+                <section>
+				    <section>
+					    <h1>Coder Decoder</h1>
+					    <h3>Functional Programmer Lingo Explained, with Pictures</h3>
+                        <img src="images/funkysnailcode.png" width="350px"/>
+                        <p>Katie Miller (<a href="http://twitter.com/codemiller" target="_blank">@codemiller</a>)</br>
+                                     <a href="http://openshift.com" target="_blank">OpenShift</a> Developer Advocate at <a href="http://redhat.com" target="_blank">Red Hat</a></p>
+                    </section>
+                    <section>
+                        <img src="images/confused-dog.gif" width="500"><span style="margin-left: 20px;"><img src="images/confused-cat.gif" width="590px"/></span>
+                    </section>
+		            <section>
+                        <h2>Mission</h2>
+                    </section>
+	                <section>
+                        <h2>Caveats</h2>
+                    </section>
 				</section>
+                <section>
+                    <section>
+                        <h2>Setting the Scene</h2>
+                        <img src="images/scene.jpg" width="750px"/>
+                    </section>
+                    <section>
+                        <h2>Haskell</h2>
+                        <div><pre><code data-noescape class="haskell highlight-green"><span class="fragment" data-fragment-index="0">list1 = [1,2,3]
+list2 = [4,5,6]</span>
 
-				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
+<span class="fragment" data-fragment-index="1">list1 ++ <span class="title">list2</span></span>
+<span class="fragment" data-fragment-index="2">-- [1,2,3,4,5,6]</span>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
+<span class="fragment disappear" data-fragment-index="4"><span class="fragment" data-fragment-index="3">catcon :: [Int] -> [Int] -> [Int]</span></span><span class="fragment disappear" data-fragment-index="5"><span class="fragment appear" data-fragment-index="4">catcon :: Num a => [a] -> [a] -> [a]</span></span><span class="fragment appear" data-fragment-index="5">catcon :: [a] -> [a] -> [a]</span>
+<span class="fragment" data-fragment-index="6">catcon x y = y ++ x</span>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+<span class="fragment disappear" data-fragment-index="8"><span class="fragment" data-fragment-index="7">list1 `catcon` <span class="title">list2</span></span></span><span class="fragment appear" data-fragment-index="8">catcon list1 list2</span>
+<span class="fragment" data-fragment-index="9">-- [4,5,6,1,2,3]</span></code></pre></div>
+                    </section>
+                    <section>
+                        <h2 class="fragment" data-fragment-index="0">Friendly Funky Snail</h2>
+                        <span class="fragment disappear" data-fragment-index="0"><img src="images/func-composed.png" width="500px"/></span><span class="fragment disappear" data-fragment-index="1"><span class="fragment appear" data-fragment-index="0"><img class="funky" src="images/funky-catcon1.png"/></span></span><span class="fragment disappear" data-fragment-index="2"><span class="fragment appear" data-fragment-index="1"><img class="funky" src="images/funky-catcon2.png"/></span></span><span class="fragment disappear" data-fragment-index="3"><span class="fragment appear" data-fragment-index="2"><img class="funky" src="images/funky-catcon3.png"/></span></span><span class="fragment disappear" data-fragment-index="4"><span class="fragment appear" data-fragment-index="3"><img class="funky" src="images/funky-catcon4.png"/></span></span><span class="fragment disappear" data-fragment-index="5"><span class="fragment appear" data-fragment-index="4"><img class="funky" src="images/funky-catcon5.png"/></span></span><span class="fragment disappear" data-fragment-index="6"><span class="fragment appear" data-fragment-index="5"><img class="funky" src="images/funky-catcon6.png"/></span></span><span class="fragment disappear" data-fragment-index="7"><span class="fragment appear" data-fragment-index="6"><img class="funky" src="images/funky-catcon7.png"/></span></span><span class="fragment appear" data-fragment-index="7"><img class="funky" src="images/funky-catcon8.png"/></span>
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
 
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
+                    </section>
+                    <section>
+                        <h2>OpenShift</h2>
+                        <img src="images/openshift.png"/>
+                    </section>
+                    <section>
+                        <h2><a href="http://wubble-katiemiller.rhcloud.com" target="_blank">Wubble</a> Demo App</h2>
+                        <div><iframe src="http://wubble-katiemiller.rhcloud.com" width="1000" height="600"></iframe></div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Referential Transparency</h2>
+                        <div class="fragment what">A property of an expression in a program that can be replaced with its value without changing the behaviour of the program</div>
+                        <div class="fragment why">We can reason about program behaviour</div>
+                    </section>
+                    <section>
+                        <pre><code data-noescape class="haskell">points = <span class="fragment disappear" data-fragment-index="4">succ <span class="fragment disappear" data-fragment-index="1"><span class="fragment highlight-bg-purple" data-fragment-index="0">(2 + 3)</span></span><span class="fragment appear highlight-bg-purple" data-fragment-index="1">5</span></span><span class="fragment appear highlight-bg-green" data-fragment-index="4">succ <span class="fragment disappear" data-fragment-index="5">(2 + 3)</span><span class="fragment appear" data-fragment-index="5">5</span></span>
+score = <span class="fragment disappear" data-fragment-index="4"><span class="fragment appear highlight-bg-blue" data-fragment-index="3">succ 5</span><span class="fragment disappear" data-fragment-index="3"><span class="fragment highlight-bg-blue" data-fragment-index="2">points</span></span></span><span class="fragment appear" data-fragment-index="4">points</span> * 10
+main = putStrLn (show score)
 
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+$ ./main
+60 
+</code></pre>
+                        <span class="fragment disappear" data-fragment-index="5"><span class="fragment" data-fragment-index="4"><img class="funky" src="images/funky-plus-succ-expression.png"/></span></span><span class="fragment appear" data-fragment-index="5"><img class="funky" src="images/funky-plus-five-expression.png"/></span>
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+                    </section>
+                    <section data-background="images/bubble.svg">
+                        <pre><code data-noescape class="haskell highlight-blue">staticPath :: FilePath -> <span class="fragment marker">IO FilePath</span>
+staticPath dir = maybe dir (++ dir) <$> lookupEnv <span class="fragment marker">"OPENSHIFT_REPO_DIR"</span></code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Higher-Order Function</h2>
+                        <div class="fragment what">A function that takes a function as an argument or returns one as a result</div>
+                        <div class="fragment why">Glue pieces of code together; reduce code repetition; modular design</div>
+                    </section>
+                    <section>
+                        <pre><code data-noescape class="haskell highlight-green">ghci> let list1 = [1,2,3]
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+<span class="fragment" data-fragment-index="0">ghci> :type map
+map :: (a -> b) -> [a] -> [b]</span>
 
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+<span class="fragment" data-fragment-index="1">ghci> <span class="fragment highlight-bg-green" data-fragment-index="2">map (\elem -> elem * 2) list1</span>
+[2,4,6]</span>
+</code></pre>
+                        <span class="fragment disappear" data-fragment-index="3"><span class="fragment" data-fragment-index="2"><img class="funky" src="images/funky-map-1.png"/></span></span><span class="fragment disappear" data-fragment-index="4"><span class="fragment appear" data-fragment-index="3"><img class="funky" src="images/funky-map-2.png"/></span></span><span class="fragment disappear" data-fragment-index="5"><span class="fragment appear" data-fragment-index="4"><img class="funky" src="images/funky-map-3.png"/></span></span><span class="fragment appear" data-fragment-index="5"><img class="funky" src="images/funky-map-4.png"/></span>
+                    </section>
+                    <section data-background="images/bubble.svg">
+                        <pre><code data-noescape class="haskell highlight-blue">staticPath :: FilePath -> IO FilePath
+staticPath dir = <span class="fragment marker">maybe</span> dir <span class="fragment marker">(++ dir)</span> <$> lookupEnv "OPENSHIFT_REPO_DIR"</code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Currying</h2>
+                        <div class="fragment what">Evaluating multi-argument functions as a chain of functions that each take exactly one argument</div>
+                        <div class="fragment why">Aids code reuse; can make code more readable</div>
+                    </section>
+                    <section>
+                        <pre><code data-noescape class="haskell highlight-green"><span class="fragment" data-fragment-index="0"><span class="fragment marker" data-fragment-index="1">catcon :: <span class="fragment highlight-bg-purple" data-fragment-index="2">[a]</span> -> <span class="fragment highlight-bg-blue" data-fragment-index="3">[a] -> [a]</span></span>
+catcon x y = y ++ x</span>
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+<span class="fragment" data-fragment-index="4">ghci> :type catcon [1,2,3]</span>
+<span class="fragment" data-fragment-index="5">catcon [1,2,3] :: Num a => [a] -> [a]</span>
+<span class="fragment" data-fragment-index="6">ghci> :type map (catcon [1,2,3])</span>
+<span class="fragment" data-fragment-index="7">map (catcon [1,2,3]) :: Num a => [[a]] -> [[a]]</span>
+<span class="fragment" data-fragment-index="8">ghci> <span class="fragment marker" data-fragment-index="13"><span class="fragment disappear" data-fragment-index="12"><span class="fragment marker" data-fragment-index="11">map <span class="fragment disappear" data-fragment-index="10"><span class="fragment marker" data-fragment-index="9">(catcon [1,2,3])</span></span><span class="fragment appear" data-fragment-index="10">(\list -> catcon [1,2,3] list)</span></span></span><span class="fragment appear" data-fragment-index="12">(\lists -> map (\list -> catcon [1,2,3] list) lists)</span> [[4],[5],[6]]</span></span>
+<span class="fragment" data-fragment-index="14">[[4,1,2,3],[5,1,2,3],[6,1,2,3]]</span></code></pre>
+                        <span class="fragment disappear" data-fragment-index="1"><span class="fragment" data-fragment-index="0"><img class="funky" src="images/funky-catcon-poly.png"/></span></span><span class="fragment disappear" data-fragment-index="8"><span class="fragment appear" data-fragment-index="1"><img class="funky" src="images/funky-catcon-poly-curried.png"/></span></span><span class="fragment disappear" data-fragment-index="9"><span class="fragment appear" data-fragment-index="8"><img class="funky" src="images/funky-curry1.png"/></span></span><span class="fragment disappear" data-fragment-index="10"><span class="fragment appear" data-fragment-index="9"><img class="funky" src="images/funky-curry2.png"/></span></span><span class="fragment disappear" data-fragment-index="11"><span class="fragment appear" data-fragment-index="10"><img class="funky" src="images/funky-curry3.png"/></span></span><span class="fragment disappear" data-fragment-index="12"><span class="fragment appear" data-fragment-index="11"><img class="funky" src="images/funky-curry4.png"/></span></span><span class="fragment disappear" data-fragment-index="13"><span class="fragment appear" data-fragment-index="12"><img class="funky" src="images/funky-curry5.png"/></span></span><span class="fragment disappear" data-fragment-index="14"><span class="fragment appear" data-fragment-index="13"><img class="funky" src="images/funky-curry6.png"/></span></span><span class="fragment disappear" data-fragment-index="15"><span class="fragment appear" data-fragment-index="14"><img class="funky" src="images/funky-curry7.png"/></span></span><span class="fragment appear" data-fragment-index="15"><img class="funky" src="images/funky-curry8.png"/></span>
+                    </section>
+                    <section data-background="images/bubble.svg">
+                        <pre><code data-noescape class="haskell highlight-blue">staticPath :: FilePath -> IO FilePath
+staticPath dir = <span class="fragment marker">maybe dir (++ dir)</span> <$> lookupEnv "OPENSHIFT_REPO_DIR"</code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Closure</h2>
+                        <div class="fragment what">An instance of a function together with the environment in which it was created</div>
+                        <div class="fragment why">Allows functions to access variables from their context even when it no longer exists; can make code more concise</div>
+                    </section>
+                    <section>
+                        <pre><code data-noescape class="haskell highlight-green"><span class="fragment" data-fragment-index="0">ghci> :type (\ch n -> <span class="fragment marker" data-fragment-index="1">(\str -> take n (repeat ch) ++ str)</span>)</span>
+<span class="fragment" data-fragment-index="2">(\ch n -> (\str -> take n (repeat ch) ++ str)) :: <span class="fragment marker" data-fragment-index="3">a -> Int -> [a] -> [a]</span></span>
 
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
+<span class="fragment" data-fragment-index="4">ghci> (\ch n -> <span class="fragment highlight-bg-purple" data-fragment-index="8">(\str -> take n (repeat ch) ++ str)</span>) <span class="fragment marker" data-fragment-index="5">'a' 5 "ha"</span></span>  
+<span class="fragment" data-fragment-index="7">"aaaaaha"</span></code></pre>
+                        <span class="fragment disappear" data-fragment-index="9"><span class="fragment" data-fragment-index="8"><img class="funky" src="images/funky-closure-1.png"/></span></span><span class="fragment disappear" data-fragment-index="10"><span class="fragment appear" data-fragment-index="9"><img class="funky" src="images/funky-closure-2.png"/></span></span><span class="fragment disappear" data-fragment-index="11"><span class="fragment appear" data-fragment-index="10"><img class="funky" src="images/funky-closure-3.png"/></span></span><span class="fragment appear" data-fragment-index="11"><img class="funky" src="images/funky-closure-4.png"/></span>
+                    </section>
+                    <section data-background="images/bubble.svg">
+                        <pre><code data-noescape class="haskell">liftIO (chooseDefs <span class="fragment highlight-bg-purple" data-fragment-index="2">ws</span> bubbles) >>= (\<span class="fragment highlight-bg-purple" data-fragment-index="2">defs</span> -> 
+liftIO (shuffled defs) >>= <span class="fragment highlight-bg-blue" data-fragment-index="0">(\<span class="fragment highlight-bg-green" data-fragment-index="2">sdefs</span> -> renderGame (<span class="fragment highlight-bg-purple" data-fragment-index="1">ws</span>^.name) <span class="fragment highlight-bg-purple" data-fragment-index="1">defs</span> <span class="fragment highlight-bg-green" data-fragment-index="1">sdefs</span>)</span>)</code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Functor</h2>
+                        <div class="fragment what">Data types that can be mapped over</div>
+                        <div class="fragment why">Identify common pattern; use abstraction to reduce code duplication</div>
+                    </section>
+                    <section>
+                        <pre><code data-noescape class="haskell highlight-green"><span class="fragment" data-fragment-index="0">ghci> :info Functor
+class Functor f where
+  <span class="fragment marker" data-fragment-index="3">fmap :: (a -> b) -> f a -> f b</span>
+  ...</span>
+<span class="fragment" data-fragment-index="1">ghci> fmap (*2) [1,2,3]
+[2,4,6]</span>
+<span class="fragment" data-fragment-index="2">ghci> fmap reverse getLine
+foo
+"oof"</span></code></pre>
+                        <span class="fragment" data-fragment-index="3"><img class="funky" src="images/funky-fmap.png"/></span>
+                    </section>
+                    <section data-background="images/bubble.svg">
+                        <pre><code data-noescape class="haskell highlight-blue">staticPath :: FilePath -> IO FilePath
+staticPath dir = maybe dir (++ dir) <span class="fragment marker"><$></span> lookupEnv "OPENSHIFT_REPO_DIR"</code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Monad</h2>
+                        <div class="fragment what">Structure that puts values in a computational context and implements functions that facilitate the chaining of these computations</div>
+                        <div class="fragment why">A large number of very useful functions can be written once for any type that fits the pattern</div>
+                    </section>
+                    <section>
+                        <pre><code data-noescape class="haskell highlight-green"><span class="fragment" data-fragment-index="0">ghci> :info Monad
+class Monad m where
+  <span class="fragment marker" data-fragment-index="4">(>>=) :: m a -> (a -> m b) -> m b</span>
+  <span class="fragment marker" data-fragment-index="4">(return :: a -> m a</span>
+  ...</span>
+<span class="fragment" data-fragment-index="1">ghci> [1,2,3] >>= (\x -> return (x + 1)) 
+[2,3,4]</span>
+<span class="fragment" data-fragment-index="2">ghci> let crossp xs ys = xs >>= (\x -> ys >>= (\y -> return (x * y)))</span>
+<span class="fragment" data-fragment-index="3">ghci> crossp [1,2,3] [2,4,6]
+[2,4,6,4,8,12,6,12,18]</span>
+</code></pre>
+                        <span class="fragment" data-fragment-index="4"><img class="funkym" src="images/funky-monad.png"/></span>
+                    </section>
+                    <section data-background="images/bubble.svg">
+                        <pre><code data-noescape class="haskell highlight-blue">-- dbConnInfo :: IO ConnectInfo
+-- connect :: ConnectInfo -> IO Connection
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
-
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
-
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
-					</section>
-				</section>
-
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
-
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
-				</section>
-
+dbConn :: IO Connection
+dbConn = <span class="fragment marker">dbConnInfo >>= connect</span></code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Lens</h2>
+                        <div class="fragment what">Data structure for accessing and mutating values in a data type</div>
+                        <div class="fragment why">Provides concise, functional way of drilling down into data types to get or set</div>
+                    </section>
+                    <section>
+                        <pre><code data-noescape class="haskell"></code></pre>
+                        <img src="images/lens.png"/>
+                    </section>
+                    <section data-background="images/bubble.svg">
+                        <pre><code data-noescape class="haskell highlight-blue">liftIO (chooseDefs ws bubbles) >>= (\defs -> 
+liftIO (shuffled defs) >>= (\sdefs -> renderGame (<span class="fragment marker">ws^.name</span>) defs sdefs))</code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Conclusion</h2>
+                    </section>
+                </section>
+	            <section>
+                    <section>
+                        <h2>Resources and Credits</h2>
+                    </section>
+                    <section>
+                        <h2>References and Resources</h2>
+                        <ul>
+                            <li><a href="http://web.cecs.pdx.edu/~mpj/pubs/springschool95.pdf" target="_blank">Jones, M. P., Functional Programming with Overloading and Higher-Order Polymorphism</a></li>
+                            <li><a href="http://learnyouahaskell.com" target="_blank">Lipovača, M., Learn You a Haskell For Great Good</a></li>
+                            <li><a href="http://book.realworldhaskell.org" target="_blank">O'Sullivan, B., Stewart, D., & Goerzen, J., Real World Haskell</a></li>
+                        </ul> 
+                    </section>
+                    <section>
+                        <h2>Image Credits</h2>
+                        <ul>
+                            <li><a href="http://openclipart.org" target="_blank">Open ClipArt</a></li>
+                        </ul>
+                    </section>
+                </section>
+			    <section>
+					    <h1>Coder Decoder</h1>
+                        <img src="images/funkysnailcode.png" width="300px"/>
+                        <h2><a href="http://decoder.codemiller.com">http://decoder.codemiller.com</a></h2>
+                        <p>Katie Miller (<a href="http://twitter.com/codemiller" target="_blank">@codemiller</a>)</br>
+                                     <a href="http://openshift.com" target="_blank">OpenShift</a> Developer Advocate at <a href="http://redhat.com" target="_blank">Red Hat</a></p>
+                </section>
 			</div>
 
 		</div>
