@@ -38,6 +38,7 @@
             .what:before { content: "WHAT: "; font-weight: bold; }
             .why { background: #4d4dae; color: white; }
             .why:before { content: "WHY: "; font-weight: bold; }
+            ul.squeeze { font-size: 90%; line-height: 1em; }
             .funky { width: 1200px; height: 373px; max-width: 100% !important; max-height: 100% !important; }
             .funkym { width: 1200px; height: 345px; max-width: 100% !important; max-height: 100% !important; }
             .highlight-blue .current-fragment { background-color: #3333FF !important; }
@@ -295,20 +296,35 @@ liftIO (shuffled defs) >>= (\sdefs -> renderGame (<span class="fragment marker">
                 </section>
 	            <section>
                     <section>
-                        <h2>Resources and Credits</h2>
+                        <h2>References, Resources, and Credits</h2>
+                        <img src="images/booksnake.jpg"/>
                     </section>
                     <section>
                         <h2>References and Resources</h2>
-                        <ul>
+                        <ul class="squeeze">
+                            <li><a href="https://www.fpcomplete.com/school/to-infinity-and-beyond/pick-of-the-week/a-little-lens-starter-tutorial" target="_blank">Abrahamson, J., A Little Lens Starter Tutorial</a></li>
+                            <li><a href="http://functionaltalks.org" target="_blank">Functional Talks</a></li>
+                            <li><a href="http://www.haskellforall.com/2012/09/the-functor-design-pattern.html" target="_blank">Gonzalez, G., The Functor Design Pattern</a></li>
+                            <li><a href="https://github.com/bitemyapp/learnhaskell" target="_blank">Haskell Learning Path</a></li>
+                            <li><a href="http://www.haskell.org/haskellwiki/Functional_programming" target="_blank">Haskell Wiki on Functional Programming</a></li>
+                            <li><a href="http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf" target="_blank">Hughes, J., Why Functional Programming Matters</a></li>
                             <li><a href="http://web.cecs.pdx.edu/~mpj/pubs/springschool95.pdf" target="_blank">Jones, M. P., Functional Programming with Overloading and Higher-Order Polymorphism</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=cefnmjtAolY" target="_blank">Kmett, E., Lenses, Folds, and Traversals</a></li>
+                            <li><a href="http://hackage.haskell.org/package/lens" target="_blank">Kmett, E., The Lens Package</a></li>
                             <li><a href="http://learnyouahaskell.com" target="_blank">Lipovača, M., Learn You a Haskell For Great Good</a></li>
                             <li><a href="http://book.realworldhaskell.org" target="_blank">O'Sullivan, B., Stewart, D., & Goerzen, J., Real World Haskell</a></li>
+                            <li><a href="http://channel9.msdn.com/Series/C9-Lectures-Erik-Meijer-Functional-Programming-Fundamentals" target="_blank">Meijer, E., Functional Programming Fundamentals Series</a></li>
+                            <li><a href="http://talks.tmorris.net" target="_blank">Morris, T., A Modern History of Lenses</a></li>
+                            <li><a href="https://github.com/nicta/course" target="_blank">Morris, T. & Hibberd, M., NICTA Functional Programming Course</a></li>
                             <li><a href="http://github.com/codemiller/wubble" target="_blank">Wubble Source Code</a></li>
+                            <li><a href="http://www.cis.upenn.edu/~cis194/" target="_blank">Yorgey, B., Introduction to Haskell</a></li>
+                            <li><a href="http://www.haskell.org/haskellwiki/Typeclassopedia" target="_blank">Yorgey, B., Typeclassopedia</a></li>
                         </ul> 
                     </section>
                     <section>
                         <h2>Image Credits</h2>
                         <ul>
+                            <li><a href="https://www.flickr.com/photos/cogdog/8139757998/in/photostream/" target="_blank">Book Snake [cropped] (Alan Levine, </a><a href="http://creativecommons.org/licenses/by-sa/2.0/legalcode" target="_blank">CC BY-SA 2.0)</a></li>
                             <li><a href="http://openclipart.org" target="_blank">Open ClipArt</a></li>
                         </ul>
                     </section>
