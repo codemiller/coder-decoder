@@ -255,7 +255,7 @@ staticPath dir = maybe dir (++ dir) <span class="fragment marker"><$></span> loo
                         <pre><code data-noescape class="haskell highlight-green"><span class="fragment" data-fragment-index="0">ghci> :info Monad
 class Monad m where
   <span class="fragment marker" data-fragment-index="4">(>>=) :: m a -> (a -> m b) -> m b</span>
-  <span class="fragment marker" data-fragment-index="4">(return :: a -> m a</span>
+  <span class="fragment marker" data-fragment-index="4">return :: a -> m a</span>
   ...</span>
 <span class="fragment" data-fragment-index="1">ghci> [1,2,3] >>= (\x -> return (x + 1)) 
 [2,3,4]</span>
