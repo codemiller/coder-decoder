@@ -255,16 +255,16 @@ staticPath dir = maybe dir (++ dir) <span class="fragment marker"><$></span> loo
                     <section>
                         <pre><code data-noescape class="haskell highlight-green"><span class="fragment" data-fragment-index="0">ghci> :info Monad
 class Monad m where
-  <span class="fragment marker" data-fragment-index="4">(>>=) :: m a -> (a -> m b) -> m b</span>
-  <span class="fragment marker" data-fragment-index="4">return :: a -> m a</span>
+  <span class="fragment marker" data-fragment-index="7">(>>=) :: m a -> (a -> m b) -> m b</span>
+  <span class="fragment marker" data-fragment-index="7">return :: a -> m a</span>
   ...</span>
 <span class="fragment" data-fragment-index="1">ghci> [1,2,3] >>= (\x -> return (x + 1)) 
 [2,3,4]</span>
-<span class="fragment" data-fragment-index="2">ghci> let crossp xs ys = xs >>= (\x -> ys >>= (\y -> return (x * y)))</span>
-<span class="fragment" data-fragment-index="3">ghci> crossp [1,2,3] [2,4,6]
+<span class="fragment" data-fragment-index="2">ghci> let crossp xs ys = <span class="fragment marker" data-fragment=index="3">xs >>= <span class="fragment marker" data-fragment-index="4">(\x -> ys >>= <span class="fragment marker" data-fragment-index="5">(\y -> return (x * y))</span>)</span></span></span>
+<span class="fragment" data-fragment-index="6">ghci> crossp [1,2,3] [2,4,6]
 [2,4,6,4,8,12,6,12,18]</span>
 </code></pre>
-                        <span class="fragment" data-fragment-index="4"><img class="funkym" src="images/funky-monad.png"/></span>
+                        <span class="fragment" data-fragment-index="7"><img class="funkym" src="images/funky-monad.png"/></span>
                     </section>
                     <section data-background="images/bubble.svg">
                         <pre><code data-noescape class="haskell highlight-blue">-- dbConnInfo :: IO ConnectInfo
