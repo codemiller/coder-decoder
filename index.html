@@ -226,7 +226,7 @@ liftIO (shuffled defs) >>= <span class="fragment highlight-bg-blue" data-fragmen
                 <section>
                     <section>
                         <h2>Functor</h2>
-                        <div class="fragment what">Data types that can be mapped over</div>
+                        <div class="fragment what">Type constructor value that can be mapped over</div>
                         <div class="fragment why">Identify common pattern; use abstraction to reduce code duplication</div>
                     </section>
                     <section>
@@ -277,12 +277,24 @@ dbConn = <span class="fragment marker">dbConnInfo >>= connect</span></code></pre
                 <section>
                     <section>
                         <h2>Lens</h2>
-                        <div class="fragment what">Data structure for accessing and mutating values in a data type</div>
+                        <div class="fragment what">Structure for accessing and mutating values in a data type</div>
                         <div class="fragment why">Provides concise, functional way of drilling down into data types to get or set</div>
                     </section>
                     <section>
-                        <pre><code data-noescape class="haskell"></code></pre>
-                        <img src="images/lens.png"/>
+                        <pre><code data-noescape class="haskell highlight-green"><span class="fragment disappear" data-fragment-index="2"><span class="fragment" data-fragment-index="0">-- data Lens s a = Lens { set :: s -> a -> s, view :: s -> a }</span>
+<span class="fragment" data-fragment-index="1">ghci> :info Lens
+type Lens s t a b = Functor f => (a -> f b) -> s -> f t
+...</span></span><span class="fragment appear" data-fragment-index="2">-- dog = Dog { _name = Name { _firstName = "Scooby", _lastName = "Da" } } 
+-- cat = Cat { _archEnemy = dog }
+-- mouse = Mouse { _food = "cheddar" }
+ 
+</span>
+<span class="fragment appear" data-fragment-index="3">ghci> <span class="fragment disappear" data-fragment-index="12"><span class="fragment highlight-bg-green" data-fragment-index="7">cat^.archEnemy^.name^.firstName</span></span></span><span class="fragment appear" data-fragment-index="12">cat^.archEnemy^.name^.firstName</span>
+<span class="fragment appear" data-fragment-index="4"><span class="fragment highlight-bg-green" data-fragment-index="13">"Scooby"</span></span>
+<span class="fragment appear" data-fragment-index="5">ghci> set archEnemy mouse cat</span>
+<span class="fragment appear" data-fragment-index="6">Cat {_archEnemy = Mouse {_food = "cheddar"}}</span>
+</code></pre>
+                        <span class="fragment disappear" data-fragment-index="8"><span class="fragment" data-fragment-index="7"><img class="funky" src="images/funky-lens-1.png"/></span></span><span class="fragment disappear" data-fragment-index="9"><span class="fragment appear" data-fragment-index="8"><img class="funky" src="images/funky-lens-2.png"/></span></span><span class="fragment disappear" data-fragment-index="10"><span class="fragment appear" data-fragment-index="9"><img class="funky" src="images/funky-lens-3.png"/></span></span><span class="fragment disappear" data-fragment-index="11"><span class="fragment appear" data-fragment-index="10"><img class="funky" src="images/funky-lens-4.png"/></span></span><span class="fragment disappear" data-fragment-index="12"><span class="fragment appear" data-fragment-index="11"><img class="funky" src="images/funky-lens-5.png"/></span></span><span class="fragment disappear" data-fragment-index="13"><span class="fragment appear" data-fragment-index="12"><img class="funky" src="images/funky-lens-6.png"/></span></span><span class="fragment disappear" data-fragment-index="14"><span class="fragment appear" data-fragment-index="13"><img class="funky" src="images/funky-lens-7.png"/></span></span><span class="fragment appear" data-fragment-index="14"><img class="funky" src="images/funky-lens-8.png"/></span>
                     </section>
                     <section data-background="images/bubble.svg">
                         <pre><code data-noescape class="haskell highlight-blue">liftIO (chooseDefs ws bubbles) >>= (\defs -> 
@@ -290,8 +302,8 @@ liftIO (shuffled defs) >>= (\sdefs -> renderGame (<span class="fragment marker">
                     </section>
                 </section>
                 <section>
-                    <section>
-                        <h2>Conclusion</h2>
+                    <section data-background="images/oldidea.jpg">
+                        <h2 style="font-weight: bold; font-size: 3em;">Conclusion</h2>
                     </section>
                 </section>
 	            <section>
@@ -326,6 +338,7 @@ liftIO (shuffled defs) >>= (\sdefs -> renderGame (<span class="fragment marker">
                         <h2>Image Credits</h2>
                         <ul>
                             <li><a href="https://www.flickr.com/photos/cogdog/8139757998/in/photostream/" target="_blank">Book Snake [cropped] (Alan Levine, </a><a href="http://creativecommons.org/licenses/by-sa/2.0/legalcode" target="_blank">CC BY-SA 2.0)</a></li>
+                            <li><a href="http://www.flickr.com/photos/heaven85/4275504652/" target="_blank">Old Idea [reworked] (Fran Para Carrion, </a><a href="http://creativecommons.org/licenses/by-sa/2.0/legalcode" target="_blank">CC BY-SA 2.0)</a></li>
                             <li><a href="http://openclipart.org" target="_blank">Open ClipArt</a></li>
                         </ul>
                     </section>
