@@ -260,7 +260,7 @@ class Monad m where
   ...</span>
 <span class="fragment" data-fragment-index="1">ghci> [1,2,3] >>= (\x -> return (x + 1)) 
 [2,3,4]</span>
-<span class="fragment" data-fragment-index="2">ghci> let crossp xs ys = <span class="fragment marker" data-fragment=index="3">xs >>= <span class="fragment marker" data-fragment-index="4">(\x -> ys >>= <span class="fragment marker" data-fragment-index="5">(\y -> return (x * y))</span>)</span></span></span>
+<span class="fragment" data-fragment-index="2">ghci> let crossp xs ys = <span class="fragment marker" data-fragment-index="3">xs >>= <span class="fragment marker" data-fragment-index="4">(\x -> ys >>= <span class="fragment marker" data-fragment-index="5">(\y -> return (x * y))</span>)</span></span></span>
 <span class="fragment" data-fragment-index="6">ghci> crossp [1,2,3] [2,4,6]
 [2,4,6,4,8,12,6,12,18]</span>
 </code></pre>
