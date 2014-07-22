@@ -155,8 +155,8 @@ $ ./main
 
                     </section>
                     <section data-background="images/bubble.svg">
-                        <pre><code data-noescape class="haskell highlight-blue">staticPath :: FilePath -> <span class="fragment marker">IO FilePath</span>
-staticPath dir = maybe dir (++ dir) <$> lookupEnv <span class="fragment marker">"OPENSHIFT_REPO_DIR"</span></code></pre>
+                        <pre><code data-noescape class="haskell highlight-blue">staticPath :: FilePath -> <span class="fragment marker" data-fragment-index="1">IO FilePath</span>
+staticPath dir = maybe dir (++ dir) <$> lookupEnv <span class="fragment marker" data-fragment-index="0">"OPENSHIFT_REPO_DIR"</span></code></pre>
                     </section>
                 </section>
                 <section>
@@ -200,7 +200,10 @@ catcon x y = y ++ x</span>
                         <span class="fragment disappear" data-fragment-index="1"><span class="fragment" data-fragment-index="0"><img class="funky" src="images/funky-catcon-poly.png"/></span></span><span class="fragment disappear" data-fragment-index="8"><span class="fragment appear" data-fragment-index="1"><img class="funky" src="images/funky-catcon-poly-curried.png"/></span></span><span class="fragment disappear" data-fragment-index="9"><span class="fragment appear" data-fragment-index="8"><img class="funky" src="images/funky-curry1.png"/></span></span><span class="fragment disappear" data-fragment-index="10"><span class="fragment appear" data-fragment-index="9"><img class="funky" src="images/funky-curry2.png"/></span></span><span class="fragment disappear" data-fragment-index="11"><span class="fragment appear" data-fragment-index="10"><img class="funky" src="images/funky-curry3.png"/></span></span><span class="fragment disappear" data-fragment-index="12"><span class="fragment appear" data-fragment-index="11"><img class="funky" src="images/funky-curry4.png"/></span></span><span class="fragment disappear" data-fragment-index="13"><span class="fragment appear" data-fragment-index="12"><img class="funky" src="images/funky-curry5.png"/></span></span><span class="fragment disappear" data-fragment-index="14"><span class="fragment appear" data-fragment-index="13"><img class="funky" src="images/funky-curry6.png"/></span></span><span class="fragment disappear" data-fragment-index="15"><span class="fragment appear" data-fragment-index="14"><img class="funky" src="images/funky-curry7.png"/></span></span><span class="fragment appear" data-fragment-index="15"><img class="funky" src="images/funky-curry8.png"/></span>
                     </section>
                     <section data-background="images/bubble.svg">
-                        <pre><code data-noescape class="haskell highlight-blue">staticPath :: FilePath -> IO FilePath
+                        <pre><code data-noescape class="haskell highlight-blue">-- maybe :: b -> (a -> b) -> Maybe a -> b
+-- maybe dir (++ dir) :: Maybe FilePath -> FilePath
+
+staticPath :: FilePath -> IO FilePath
 staticPath dir = <span class="fragment marker">maybe dir (++ dir)</span> <$> lookupEnv "OPENSHIFT_REPO_DIR"</code></pre>
                     </section>
                 </section>
@@ -242,7 +245,10 @@ foo
                         <span class="fragment" data-fragment-index="3"><img class="funky" src="images/funky-fmap.png"/></span>
                     </section>
                     <section data-background="images/bubble.svg">
-                        <pre><code data-noescape class="haskell highlight-blue">staticPath :: FilePath -> IO FilePath
+                        <pre><code data-noescape class="haskell highlight-blue">-- maybe dir (++ dir) :: Maybe FilePath -> FilePath
+-- lookupEnv "OPENSHIFT_REPO_DIR" :: IO (Maybe String)
+
+staticPath :: FilePath -> IO FilePath
 staticPath dir = maybe dir (++ dir) <span class="fragment marker"><$></span> lookupEnv "OPENSHIFT_REPO_DIR"</code></pre>
                     </section>
                 </section>
@@ -255,16 +261,16 @@ staticPath dir = maybe dir (++ dir) <span class="fragment marker"><$></span> loo
                     <section>
                         <pre><code data-noescape class="haskell highlight-green"><span class="fragment" data-fragment-index="0">ghci> :info Monad
 class Monad m where
-  <span class="fragment marker" data-fragment-index="7">(>>=) :: m a -> (a -> m b) -> m b</span>
-  <span class="fragment marker" data-fragment-index="7">return :: a -> m a</span>
+  <span class="fragment marker" data-fragment-index="1">(>>=) :: m a -> (a -> m b) -> m b</span>
+  <span class="fragment marker" data-fragment-index="1">return :: a -> m a</span>
   ...</span>
-<span class="fragment" data-fragment-index="1">ghci> [1,2,3] >>= (\x -> return (x + 1)) 
+<span class="fragment" data-fragment-index="2">ghci> [1,2,3] >>= (\x -> return (x + 1)) 
 [2,3,4]</span>
-<span class="fragment" data-fragment-index="2">ghci> let crossp xs ys = <span class="fragment marker" data-fragment-index="3">xs >>= <span class="fragment marker" data-fragment-index="4">(\x -> ys >>= <span class="fragment marker" data-fragment-index="5">(\y -> return (x * y))</span>)</span></span></span>
-<span class="fragment" data-fragment-index="6">ghci> crossp [1,2,3] [2,4,6]
+<span class="fragment" data-fragment-index="3">ghci> let crossp xs ys = <span class="fragment marker" data-fragment-index="4">xs >>= <span class="fragment marker" data-fragment-index="5">(\x -> ys >>= <span class="fragment marker" data-fragment-index="6">(\y -> return (x * y))</span>)</span></span></span>
+<span class="fragment" data-fragment-index="7">ghci> crossp [1,2,3] [2,4,6]
 [2,4,6,4,8,12,6,12,18]</span>
 </code></pre>
-                        <span class="fragment" data-fragment-index="7"><img class="funkym" src="images/funky-monad.png"/></span>
+                        <span class="fragment" data-fragment-index="1"><img class="funkym" src="images/funky-monad.png"/></span>
                     </section>
                     <section data-background="images/bubble.svg">
                         <pre><code data-noescape class="haskell highlight-blue">-- dbConnInfo :: IO ConnectInfo
@@ -289,12 +295,12 @@ type Lens s t a b = Functor f => (a -> f b) -> s -> f t
 -- mouse = Mouse { _food = "cheddar" }
  
 </span>
-<span class="fragment appear" data-fragment-index="3">ghci> <span class="fragment disappear" data-fragment-index="12"><span class="fragment highlight-bg-green" data-fragment-index="7">cat^.archEnemy^.name^.firstName</span></span></span><span class="fragment appear" data-fragment-index="12">cat^.archEnemy^.name^.firstName</span>
-<span class="fragment appear" data-fragment-index="4"><span class="fragment highlight-bg-green" data-fragment-index="13">"Scooby"</span></span>
-<span class="fragment appear" data-fragment-index="5">ghci> set archEnemy mouse cat</span>
-<span class="fragment appear" data-fragment-index="6">Cat {_archEnemy = Mouse {_food = "cheddar"}}</span>
+<span class="fragment appear" data-fragment-index="3">ghci> <span class="fragment disappear" data-fragment-index="9"><span class="fragment highlight-bg-green" data-fragment-index="4">cat^.archEnemy^.name^.firstName</span></span></span><span class="fragment appear" data-fragment-index="9">cat^.archEnemy^.name^.firstName</span>
+<span class="fragment appear" data-fragment-index="10">"Scooby"</span>
+<span class="fragment appear" data-fragment-index="12">ghci> set archEnemy mouse cat</span>
+<span class="fragment appear" data-fragment-index="13">Cat {_archEnemy = Mouse {_food = "cheddar"}}</span>
 </code></pre>
-                        <span class="fragment disappear" data-fragment-index="8"><span class="fragment" data-fragment-index="7"><img class="funky" src="images/funky-lens-1.png"/></span></span><span class="fragment disappear" data-fragment-index="9"><span class="fragment appear" data-fragment-index="8"><img class="funky" src="images/funky-lens-2.png"/></span></span><span class="fragment disappear" data-fragment-index="10"><span class="fragment appear" data-fragment-index="9"><img class="funky" src="images/funky-lens-3.png"/></span></span><span class="fragment disappear" data-fragment-index="11"><span class="fragment appear" data-fragment-index="10"><img class="funky" src="images/funky-lens-4.png"/></span></span><span class="fragment disappear" data-fragment-index="12"><span class="fragment appear" data-fragment-index="11"><img class="funky" src="images/funky-lens-5.png"/></span></span><span class="fragment disappear" data-fragment-index="13"><span class="fragment appear" data-fragment-index="12"><img class="funky" src="images/funky-lens-6.png"/></span></span><span class="fragment disappear" data-fragment-index="14"><span class="fragment appear" data-fragment-index="13"><img class="funky" src="images/funky-lens-7.png"/></span></span><span class="fragment appear" data-fragment-index="14"><img class="funky" src="images/funky-lens-8.png"/></span>
+                        <span class="fragment disappear" data-fragment-index="5"><span class="fragment" data-fragment-index="4"><img class="funky" src="images/funky-lens-1.png"/></span></span><span class="fragment disappear" data-fragment-index="6"><span class="fragment appear" data-fragment-index="5"><img class="funky" src="images/funky-lens-2.png"/></span></span><span class="fragment disappear" data-fragment-index="7"><span class="fragment appear" data-fragment-index="6"><img class="funky" src="images/funky-lens-3.png"/></span></span><span class="fragment disappear" data-fragment-index="8"><span class="fragment appear" data-fragment-index="7"><img class="funky" src="images/funky-lens-4.png"/></span></span><span class="fragment disappear" data-fragment-index="9"><span class="fragment appear" data-fragment-index="8"><img class="funky" src="images/funky-lens-5.png"/></span></span><span class="fragment disappear" data-fragment-index="10"><span class="fragment appear" data-fragment-index="9"><img class="funky" src="images/funky-lens-6.png"/></span></span><span class="fragment disappear" data-fragment-index="11"><span class="fragment appear" data-fragment-index="10"><img class="funky" src="images/funky-lens-7.png"/></span></span><span class="fragment appear" data-fragment-index="11"><img class="funky" src="images/funky-lens-8.png"/></span>
                     </section>
                     <section data-background="images/bubble.svg">
                         <pre><code data-noescape class="haskell highlight-blue">liftIO (chooseDefs ws bubbles) >>= (\defs -> 
