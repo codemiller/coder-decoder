@@ -268,11 +268,14 @@ class Monad m where
                         <span class="fragment" data-fragment-index="1"><img class="funkym" src="images/funky-monad.png"/></span>
                     </section>
                     <section data-background="images/bubble.svg">
-                        <pre><code data-noescape class="haskell highlight-blue">-- dbConnInfo :: IO ConnectInfo
--- connect :: ConnectInfo -> IO Connection
+                        <pre><code data-noescape class="haskell highlight-blue">dbConn :: IO Connection
+dbConn = <span class="fragment marker" data-fragment-index="1">dbConnInfo >>= connect</span>
 
-dbConn :: IO Connection
-dbConn = <span class="fragment marker">dbConnInfo >>= connect</span></code></pre>
+<span class="fragment" data-fragment-index="2">-- dbConnInfo :: IO ConnectInfo</span>
+<span class="fragment" data-fragment-index="3">-- connect :: ConnectInfo -> IO Connection</span>
+<span class="fragment disappear" data-fragment-index="6"><span class="fragment" data-fragment-index="4">-- (>>=) :: Monad m => m a -> (a -> m b) -> m b</span></span><span class="fragment appear" data-fragment-index="6">-- m  a           -> (a           -> m  b         ) -> m  b</span>
+<span class="fragment" data-fragment-index="5">-- IO ConnectInfo -> (ConnectInfo -> IO Connection) -> IO Connection</span>
+</code></pre>
                     </section>
                 </section>
                 <section>
