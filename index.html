@@ -45,6 +45,7 @@
             .highlight-green .current-fragment { background-color: #005A1E !important; }
             .highlight-purple .current-fragment { background-color: #8A2BE2 !important; }
             .purple-bg { background-color: #8A2BE2 !important; }
+            .above { z-index: 2; position: absolute; }
             .reveal .slides section .fragment.highlight-bg-green,
             .reveal .slides section .fragment.highlight-bg-blue,
             .reveal .slides section .fragment.highlight-bg-purple {
@@ -119,9 +120,11 @@ list2 = [4,5,6]</span>
 <span class="fragment appear" data-fragment-index="4">catcon list1 list2</span>
 <span class="fragment" data-fragment-index="5">-- [4,5,6,1,2,3]</span>
  
-<span class="fragment disappear" data-fragment-index="9"><span class="fragment" data-fragment-index="6"><span class="fragment marker" data-fragment-index="7">catcon</span> :: <span class="fragment marker" data-fragment-index="8">[Int] -> [Int] -> [Int]</span></span></span><span class="fragment disappear" data-fragment-index="11"><span class="fragment appear" data-fragment-index="9">catcon :: <span class="fragment marker" data-fragment-index="10">Num a</span> => [a] -> [a] -> [a]</span></span><span class="fragment appear" data-fragment-index="11">catcon :: [a] -> [a] -> [a]</span>
-<span class="fragment" data-fragment-index="12">catcon <span class="fragment marker" data-fragment-index="13">xs ys</span> = <span class="fragment marker" data-fragment-index="14">ys ++ xs</span></span></code></pre></div>
-                   </section>
+<span class="fragment disappear" data-fragment-index="9"><span class="fragment" data-fragment-index="6"><span class="fragment marker" data-fragment-index="7">catcon</span> :: <span class="fragment marker" data-fragment-index="8">[Int] -> [Int] -> [Int]</span></span></span><span class="fragment disappear" data-fragment-index="13"><span class="fragment appear" data-fragment-index="9">catcon :: <span class="fragment highlight-bg-green" data-fragment-index="10">Num a</span> => [a] -> [a] -> [a]</span></span><span class="fragment appear" data-fragment-index="13">catcon :: [a] -> [a] -> [a]</span>
+<span class="fragment" data-fragment-index="14">catcon <span class="fragment marker" data-fragment-index="15">xs ys</span> = <span class="fragment marker" data-fragment-index="16">ys ++ xs</span></span></code></pre></div>
+                    <div class="fragment disappear" data-fragment-index="12"><div class="fragment above" data-fragment-index="11" style="top: 130px; right: 50px;"><img src="images/num-typeclass.png"/></div></div>
+                    <div class="fragment disappear" data-fragment-index="13"><div class="fragment above" data-fragment-index="12" style="top: 130px; right: 343px;"><img src="images/num-typeclass-java.png"/></div></div>
+                    </section>
                     <section>
                         <h2 class="fragment" data-fragment-index="0">Friendly Funky Snail</h2>
                         <span class="fragment disappear" data-fragment-index="0"><img src="images/func-composed.png" width="500px"/></span><span class="fragment disappear" data-fragment-index="1"><span class="fragment appear" data-fragment-index="0"><img class="funky" src="images/funky-catcon1.png"/></span></span><span class="fragment disappear" data-fragment-index="2"><span class="fragment appear" data-fragment-index="1"><img class="funky" src="images/funky-catcon2.png"/></span></span><span class="fragment disappear" data-fragment-index="3"><span class="fragment appear" data-fragment-index="2"><img class="funky" src="images/funky-catcon3.png"/></span></span><span class="fragment disappear" data-fragment-index="4"><span class="fragment appear" data-fragment-index="3"><img class="funky" src="images/funky-catcon4.png"/></span></span><span class="fragment disappear" data-fragment-index="5"><span class="fragment appear" data-fragment-index="4"><img class="funky" src="images/funky-catcon5.png"/></span></span><span class="fragment disappear" data-fragment-index="6"><span class="fragment appear" data-fragment-index="5"><img class="funky" src="images/funky-catcon6.png"/></span></span><span class="fragment disappear" data-fragment-index="7"><span class="fragment appear" data-fragment-index="6"><img class="funky" src="images/funky-catcon7.png"/></span></span><span class="fragment appear" data-fragment-index="7"><img class="funky" src="images/funky-catcon8.png"/></span>
@@ -142,12 +145,11 @@ list2 = [4,5,6]</span>
                         <div class="why">We can reason about program behaviour</div>
                     </section>
                     <section>
-                        <pre><code data-noescape class="haskell"><span class="fragment" data-fragment-index="0">points = <span class="fragment disappear" data-fragment-index="6">succ <span class="fragment disappear" data-fragment-index="3"><span class="fragment highlight-bg-green" data-fragment-index="2">(2 + 3)</span></span><span class="fragment disappear" data-fragment-index="4"><span class="fragment appear highlight-bg-green" data-fragment-index="3">5</span></span><span class="fragment appear" data-fragment-index="4">5</span></span><span class="fragment appear highlight-bg-green" data-fragment-index="6">succ <span class="fragment disappear" data-fragment-index="7">(2 + 3)</span><span class="fragment appear" data-fragment-index="7">5</span></span>
-score = <span class="fragment disappear" data-fragment-index="6"><span class="fragment appear highlight-bg-blue" data-fragment-index="5">succ 5</span><span class="fragment disappear" data-fragment-index="5"><span class="fragment highlight-bg-blue" data-fragment-index="4">points</span></span></span><span class="fragment appear" data-fragment-index="6">points</span> * 10
-main = putStrLn (show score)</span>
+                        <pre><code data-noescape class="haskell"><span class="fragment" data-fragment-index="0"><span class="fragment disappear" data-fragment-index="6"><span class="fragment highlight-bg-blue" data-fragment-index="4">score</span></span><span class="fragment appear" data-fragment-index="6">score</span> = <span class="fragment disappear" data-fragment-index="6">succ <span class="fragment disappear" data-fragment-index="3"><span class="fragment highlight-bg-green" data-fragment-index="2">(2 + 3)</span></span><span class="fragment disappear" data-fragment-index="4"><span class="fragment appear highlight-bg-green" data-fragment-index="3">5</span></span><span class="fragment appear" data-fragment-index="4">5</span></span><span class="fragment appear highlight-bg-green" data-fragment-index="6">succ <span class="fragment disappear" data-fragment-index="7">(2 + 3)</span><span class="fragment appear highlight-bg-green" data-fragment-index="7">5</span><span class="fragment disappear" data-fragment-index="6"><span class="fragment appear" data-fragment-index="4">5</span></span></span>
+main = putStrLn (show <span class="fragment disappear" data-fragment-index="5"><span class="fragment highlight-bg-blue" data-fragment-index="4">score</span></span><span class="fragment disappear" data-fragment-index="6"><span class="fragment appear highlight-bg-blue" data-fragment-index="5">(succ 5)</span></span><span class="fragment appear" data-fragment-index="6">score</span>)</span>
 
 <span class="fragment purple-bg" data-fragment-index="1">$ ./main
-60</span>
+6</span>
 </code></pre>
                         <span class="fragment disappear" data-fragment-index="7"><span class="fragment" data-fragment-index="6"><img class="funky" src="images/funky-plus-succ-expression.png"/></span></span><span class="fragment appear" data-fragment-index="7"><img class="funky" src="images/funky-plus-five-expression.png"/></span>
 
@@ -223,27 +225,28 @@ staticPath dir = <span class="fragment highlight-bg-purple" data-fragment-index=
                 <section>
                     <section>
                         <h2>Functor</h2>
-                        <div class="what">Type constructor value that can be mapped over</div>
+                        <div class="what">Structure that can be mapped over</div>
                         <div class="why">Identify common pattern; use abstraction to reduce code duplication</div>
                     </section>
                     <section>
                         <pre><code data-noescape class="haskell highlight-green"><span class="fragment" data-fragment-index="0">ghci> :info Functor
 class Functor f where
-  <span class="fragment marker" data-fragment-index="3">fmap :: (a -> b) -> f a -> f b</span>
+  <span class="fragment marker" data-fragment-index="7">fmap :: (a -> b) -> f a -> f b</span>
   ...</span>
-<span class="fragment" data-fragment-index="1">ghci> fmap (*2) [1,2,3]
+<span class="fragment" data-fragment-index="8">ghci> fmap (*2) [1,2,3]
 [2,4,6]</span>
-<span class="fragment" data-fragment-index="2">ghci> fmap reverse getLine
+<span class="fragment" data-fragment-index="9">ghci> fmap reverse getLine
 foo
 "oof"</span></code></pre>
-                        <span class="fragment" data-fragment-index="3"><img class="funky" src="images/funky-fmap.png"/></span>
+                        <div class="fragment disappear" data-fragment-index="8"><div class="fragment above" data-fragment-index="1" style="top: 55px; right: 60px;"><img src="images/functor-typeclass-java.png"/></div></div>
+                        <span class="fragment disappear" data-fragment-index="3"><span class="fragment" data-fragment-index="2"><img class="funky" src="images/functor-1.png"/></span></span><span class="fragment disappear" data-fragment-index="4"><span class="fragment appear" data-fragment-index="3"><img class="funky" src="images/functor-2.png"/></span></span><span class="fragment disappear" data-fragment-index="5"><span class="fragment appear" data-fragment-index="4"><img class="funky" src="images/functor-3.png"/></span></span><span class="fragment disappear" data-fragment-index="6"><span class="fragment appear" data-fragment-index="5"><img class="funky" src="images/functor-4.png"/></span></span><span class="fragment disappear" data-fragment-index="7"><span class="fragment appear" data-fragment-index="6"><img class="funky" src="images/functor-5.png"/></span></span><span class="fragment appear" data-fragment-index="7"><img class="funky" src="images/funky-fmap.png"/></span>
                     </section>
                     <section data-background="images/bubble.svg">
-                        <pre><code data-noescape class="haskell highlight-blue">staticPath :: FilePath -> IO FilePath
-staticPath dir = maybe dir (++ dir) <span class="fragment marker"><$></span> lookupEnv "OPENSHIFT_REPO_DIR"
+                        <pre><code data-noescape class="haskell highlight-blue">staticPath :: FilePath -> <span class="fragment marker" data-fragment-index="3">IO FilePath</span>
+staticPath dir = <span class="fragment marker" data-fragment-index="1">maybe dir (++ dir)</span> <span class="fragment marker" data-fragment-index="0"><$></span> <span class="fragment marker" data-fragment-index="2">lookupEnv "OPENSHIFT_REPO_DIR"</span>
 
--- maybe dir (++ dir) :: Maybe FilePath -> FilePath
--- lookupEnv "OPENSHIFT_REPO_DIR" :: IO (Maybe String)
+-- maybe dir (++ dir) :: <span class="fragment marker" data-fragment-index="1">Maybe FilePath -> FilePath</span>
+-- lookupEnv "OPENSHIFT_REPO_DIR" :: <span class="fragment marker" data-fragment-index="2">IO (Maybe FilePath)</span>
 </code></pre>
                     </section>
                 </section>
@@ -256,20 +259,20 @@ staticPath dir = maybe dir (++ dir) <span class="fragment marker"><$></span> loo
                     <section>
                         <pre><code data-noescape class="haskell highlight-green"><span class="fragment" data-fragment-index="0">ghci> :info Monad
 class Monad m where
-  <span class="fragment marker" data-fragment-index="1">(>>=) :: m a -> (a -> m b) -> m b</span>
-  <span class="fragment marker" data-fragment-index="1">return :: a -> m a</span>
+  <span class="fragment marker" data-fragment-index="2">(>>=) :: m a -> (a -> m b) -> m b</span>
+  <span class="fragment marker" data-fragment-index="2">return :: a -> m a</span>
   ...</span>
-<span class="fragment" data-fragment-index="2">ghci> [1,2,3] >>= (\x -> return (x + 1)) 
-[2,3,4]</span>
-<span class="fragment" data-fragment-index="3">ghci> let crossp xs ys = <span class="fragment marker" data-fragment-index="4">xs >>= <span class="fragment marker" data-fragment-index="5">(\x -> ys >>= <span class="fragment marker" data-fragment-index="6">(\y -> return (x * y))</span>)</span></span></span>
-<span class="fragment" data-fragment-index="7">ghci> crossp [1,2,3] [2,4,6]
-[2,4,6,4,8,12,6,12,18]</span>
+<span class="fragment" data-fragment-index="3">ghci> <span class="fragment marker" data-fragment-index="4">["walk","nap","fight"]</span> >>= <span class="fragment marker" data-fragment-index="5">(\t -> return <span class="fragment marker" data-fragment-index="6">("cat" ++ t)</span>)</span></span>
+<span class="fragment" data-fragment-index="7">["catwalk","catnap","catfight"]</span>
+<span class="fragment" data-fragment-index="8">ghci> <span class="fragment marker" data-fragment-index="9">["walk","nap","fight"]</span> >>= <span class="fragment marker" data-fragment-index="10">(\t -> <span class="fragment marker" data-fragment-index="11">["cat","dog"]</span> >>= <span class="fragment marker" data-fragment-index="12">(\a -> <span class="fragment marker" data-fragment-index="13">return (a ++ t)</span>)</span>)</span></span>
+<span class="fragment" data-fragment-index="14">["catwalk","dogwalk","catnap","dognap","catfight","dogfight"]</span>
 </code></pre>
-                        <span class="fragment" data-fragment-index="1"><img class="funkym" src="images/funky-monad.png"/></span>
+                        <div class="fragment disappear" data-fragment-index="3"><div class="fragment above" data-fragment-index="1" style="top: 55px; right: 30px;"><img src="images/monad-typeclass-java.png"/></div></div>
+                        <span class="fragment" data-fragment-index="2"><img class="funkym" src="images/funky-monad.png"/></span>
                     </section>
                     <section data-background="images/bubble.svg">
-                        <pre><code data-noescape class="haskell highlight-blue">dbConn :: IO Connection
-dbConn = <span class="fragment marker" data-fragment-index="1">dbConnInfo >>= connect</span>
+                        <pre><code data-noescape class="haskell highlight-blue">dbConn :: <span class="fragment marker" data-fragment-index="7">IO Connection</span>
+dbConn = <span class="fragment marker" data-fragment-index="1"><span class="fragment marker" data-fragment-index="2">dbConnInfo</span> <span class="fragment marker" data-fragment-index="4">>>=</span> <span class="fragment marker" data-fragment-index="3">connect</span></span>
 
 <span class="fragment" data-fragment-index="2">-- dbConnInfo :: IO ConnectInfo</span>
 <span class="fragment" data-fragment-index="3">-- connect :: ConnectInfo -> IO Connection</span>
@@ -330,6 +333,7 @@ type Lens s t a b = Functor f => (a -> f b) -> s -> f t
                             <li><a href="http://channel9.msdn.com/Series/C9-Lectures-Erik-Meijer-Functional-Programming-Fundamentals" target="_blank">Meijer, E., Functional Programming Fundamentals Series</a></li>
                             <li><a href="http://monads.codemiller.com" target="_blank">Miller, K., Monads to the Rescue</a></li>
                             <li><a href="http://talks.tmorris.net" target="_blank">Morris, T., A Modern History of Lenses</a></li>
+                            <li><a href="http://talks.tmorris.net" target="_blank">Morris, T., Comonads, Applicative Functors, Monads and Other Principled Things</a></li>
                             <li><a href="https://github.com/nicta/course" target="_blank">Morris, T. & Hibberd, M., NICTA Functional Programming Course</a></li>
                             <li><a href="http://book.realworldhaskell.org" target="_blank">O'Sullivan, B., Stewart, D., & Goerzen, J., Real World Haskell</a></li>
                             <li><a href="http://github.com/codemiller/wubble" target="_blank">Wubble Source Code</a></li>
