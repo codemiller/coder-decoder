@@ -38,6 +38,7 @@
             .what:before { content: "WHAT: "; font-weight: bold; }
             .why { background: #4d4dae; color: white; }
             .why:before { content: "WHY: "; font-weight: bold; }
+            .overlay { color: white !important; background: rgba(0,0,0,0.65); min-height: 150px; }
             ul.squeeze { font-size: 90%; line-height: 1em; }
             .funky { width: 1200px; height: 373px; max-width: 100% !important; max-height: 100% !important; }
             .funkym { width: 1200px; height: 345px; max-width: 100% !important; max-height: 100% !important; }
@@ -102,6 +103,9 @@
                     </section>
 	                <section>
                         <h2>Caveats</h2>
+                    </section>
+  	                <section data-background="images/matrix.jpg">
+                        <h2 class="overlay">No one can be told </br>what the Monad is...</h2>
                     </section>
 				</section>
                 <section>
@@ -259,16 +263,16 @@ staticPath dir = <span class="fragment marker" data-fragment-index="1">maybe dir
                     <section>
                         <pre><code data-noescape class="haskell highlight-green"><span class="fragment" data-fragment-index="0">ghci> :info Monad
 class Monad m where
-  <span class="fragment marker" data-fragment-index="2">(>>=) :: m a -> (a -> m b) -> m b</span>
-  <span class="fragment marker" data-fragment-index="2">return :: a -> m a</span>
+  <span class="fragment marker" data-fragment-index="6">(>>=) :: m a -> (a -> m b) -> m b</span>
+  <span class="fragment marker" data-fragment-index="6">return :: a -> m a</span>
   ...</span>
-<span class="fragment" data-fragment-index="3">ghci> <span class="fragment marker" data-fragment-index="4">["walk","nap","fight"]</span> >>= <span class="fragment marker" data-fragment-index="5">(\t -> return <span class="fragment marker" data-fragment-index="6">("cat" ++ t)</span>)</span></span>
-<span class="fragment" data-fragment-index="7">["catwalk","catnap","catfight"]</span>
-<span class="fragment" data-fragment-index="8">ghci> <span class="fragment marker" data-fragment-index="9">["walk","nap","fight"]</span> >>= <span class="fragment marker" data-fragment-index="10">(\t -> <span class="fragment marker" data-fragment-index="11">["cat","dog"]</span> >>= <span class="fragment marker" data-fragment-index="12">(\a -> <span class="fragment marker" data-fragment-index="13">return (a ++ t)</span>)</span>)</span></span>
-<span class="fragment" data-fragment-index="14">["catwalk","dogwalk","catnap","dognap","catfight","dogfight"]</span>
+<span class="fragment" data-fragment-index="7">ghci> <span class="fragment marker" data-fragment-index="8">["walk","nap","fight"]</span> >>= <span class="fragment marker" data-fragment-index="9">(\t -> return <span class="fragment marker" data-fragment-index="10">("cat" ++ t)</span>)</span></span>
+<span class="fragment" data-fragment-index="11">["catwalk","catnap","catfight"]</span>
+<span class="fragment" data-fragment-index="12">ghci> <span class="fragment marker" data-fragment-index="13">["walk","nap","fight"]</span> >>= <span class="fragment marker" data-fragment-index="14">(\t -> <span class="fragment marker" data-fragment-index="15">["cat","dog"]</span> >>= <span class="fragment marker" data-fragment-index="16">(\a -> <span class="fragment marker" data-fragment-index="17">return (a ++ t)</span>)</span>)</span></span>
+<span class="fragment" data-fragment-index="18">["catwalk","dogwalk","catnap","dognap","catfight","dogfight"]</span>
 </code></pre>
-                        <div class="fragment disappear" data-fragment-index="3"><div class="fragment above" data-fragment-index="1" style="top: 55px; right: 30px;"><img src="images/monad-typeclass-java.png"/></div></div>
-                        <span class="fragment" data-fragment-index="2"><img class="funkym" src="images/funky-monad.png"/></span>
+                        <div class="fragment disappear" data-fragment-index="6"><div class="fragment above" data-fragment-index="1" style="top: 55px; right: 30px;"><img src="images/monad-typeclass-java.png"/></div></div>
+                        <span class="fragment disappear" data-fragment-index="3"><span class="fragment" data-fragment-index="2"><img class="funkym" src="images/funky-monad-0.png"/></span></span><span class="fragment disappear" data-fragment-index="4"><span class="fragment appear" data-fragment-index="3"><img class="funkym" src="images/funky-monad-1.png"/></span></span><span class="fragment disappear" data-fragment-index="5"><span class="fragment appear" data-fragment-index="4"><img class="funkym" src="images/funky-monad-2.png"/></span></span><span class="fragment disappear" data-fragment-index="6"><span class="fragment appear" data-fragment-index="5"><img class="funkym" src="images/funky-monad-3.png"/></span></span><span class="fragment" data-fragment-index="6"><img class="funkym" src="images/funky-monad.png"/></span>
                     </section>
                     <section data-background="images/bubble.svg">
                         <pre><code data-noescape class="haskell highlight-blue">dbConn :: <span class="fragment marker" data-fragment-index="7">IO Connection</span>
@@ -345,6 +349,7 @@ type Lens s t a b = Functor f => (a -> f b) -> s -> f t
                         <h2>Image Credits</h2>
                         <ul>
                             <li><a href="https://www.flickr.com/photos/cogdog/8139757998/in/photostream/" target="_blank">Book Snake [cropped] (Alan Levine, </a><a href="http://creativecommons.org/licenses/by-sa/2.0/legalcode" target="_blank">CC BY-SA 2.0)</a></li>
+                            <li><a href="http://el-sobreviviente.deviantart.com/art/Matrix-98173515" target="_blank">Matrix (El-Sobreviviente, </a><a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0)</a></li>
                             <li><a href="http://www.flickr.com/photos/heaven85/4275504652/" target="_blank">Old Idea [reworked] (Fran Para Carrion, </a><a href="http://creativecommons.org/licenses/by-sa/2.0/legalcode" target="_blank">CC BY-SA 2.0)</a></li>
                             <li><a href="http://openclipart.org" target="_blank">Open ClipArt</a></li>
                         </ul>
