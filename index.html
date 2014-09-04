@@ -149,13 +149,13 @@ list2 = [4,5,6]</span>
                         <div class="why">We can reason about program behaviour</div>
                     </section>
                     <section>
-                        <pre><code data-noescape class="haskell"><span class="fragment" data-fragment-index="0"><span class="fragment disappear" data-fragment-index="6"><span class="fragment highlight-bg-blue" data-fragment-index="4">score</span></span><span class="fragment appear" data-fragment-index="6">score</span> = <span class="fragment disappear" data-fragment-index="6">succ <span class="fragment disappear" data-fragment-index="3"><span class="fragment highlight-bg-green" data-fragment-index="2">(2 + 3)</span></span><span class="fragment disappear" data-fragment-index="4"><span class="fragment appear highlight-bg-green" data-fragment-index="3">5</span></span><span class="fragment appear" data-fragment-index="4">5</span></span><span class="fragment appear highlight-bg-green" data-fragment-index="6">succ <span class="fragment disappear" data-fragment-index="7">(2 + 3)</span><span class="fragment appear highlight-bg-green" data-fragment-index="7">5</span><span class="fragment disappear" data-fragment-index="6"><span class="fragment appear" data-fragment-index="4">5</span></span></span>
-main = putStrLn (show <span class="fragment disappear" data-fragment-index="5"><span class="fragment highlight-bg-blue" data-fragment-index="4">score</span></span><span class="fragment disappear" data-fragment-index="6"><span class="fragment appear highlight-bg-blue" data-fragment-index="5">(succ 5)</span></span><span class="fragment appear" data-fragment-index="6">score</span>)</span>
+                        <pre><code data-noescape class="haskell"><span class="fragment" data-fragment-index="0"><span class="fragment highlight-bg-blue" data-fragment-index="4">score</span> = succ <span class="fragment disappear" data-fragment-index="3"><span class="fragment highlight-bg-green" data-fragment-index="2">(2 + 3)</span></span><span class="fragment disappear" data-fragment-index="4"><span class="fragment appear highlight-bg-green" data-fragment-index="3">5</span></span><span class="fragment appear" data-fragment-index="4">5</span>
+main = putStrLn (show <span class="fragment disappear" data-fragment-index="5"><span class="fragment highlight-bg-blue" data-fragment-index="4">score</span></span><span class="fragment appear highlight-bg-blue" data-fragment-index="5">(succ 5)</span>)</span>
 
 <span class="fragment purple-bg" data-fragment-index="1">$ ./main
 6</span>
 </code></pre>
-                        <span class="fragment disappear" data-fragment-index="7"><span class="fragment" data-fragment-index="6"><img class="funky" src="images/funky-plus-succ-expression.png"/></span></span><span class="fragment appear" data-fragment-index="7"><img class="funky" src="images/funky-plus-five-expression.png"/></span>
+                    <span class="fragment disappear" data-fragment-index="3"><span class="fragment" data-fragment-index="2"><img class="funky" src="images/funky-plus-succ-expression.png"/></span></span><span class="fragment appear" data-fragment-index="3"><img class="funky" src="images/funky-plus-five-expression.png"/></span>
 
                     </section>
                     <section data-background="images/bubble.svg">
@@ -175,10 +175,10 @@ staticPath dir = maybe dir (++ dir) <$> lookupEnv <span class="fragment marker" 
 <span class="fragment" data-fragment-index="0">ghci> :type map</span>
 <span class="fragment" data-fragment-index="1">map :: (a -> b) -> [a] -> [b]</span>
 
-<span class="fragment" data-fragment-index="2">ghci> <span class="fragment highlight-bg-green" data-fragment-index="7">map <span class="fragment marker" data-fragment-index="3">(\<span class="fragment marker" data-fragment-index="4">elem</span> -> <span class="fragment marker" data-fragment-index="5">elem * 2</span>)</span> list1</span></span>
-<span class="fragment" data-fragment-index="6">[2,4,6]</span>
+<span class="fragment" data-fragment-index="2">ghci> <span class="fragment marker" data-fragment-index="6">map <span class="fragment marker" data-fragment-index="3">(\<span class="fragment marker" data-fragment-index="4">elem</span> -> <span class="fragment marker" data-fragment-index="5">elem * 2</span>)</span> list1</span></span>
+<span class="fragment" data-fragment-index="7">[2,4,6]</span>
 </code></pre>
-                        <span class="fragment disappear" data-fragment-index="8"><span class="fragment" data-fragment-index="7"><img class="funky" src="images/funky-map-1.png"/></span></span><span class="fragment disappear" data-fragment-index="9"><span class="fragment appear" data-fragment-index="8"><img class="funky" src="images/funky-map-2.png"/></span></span><span class="fragment disappear" data-fragment-index="10"><span class="fragment appear" data-fragment-index="9"><img class="funky" src="images/funky-map-3.png"/></span></span><span class="fragment appear" data-fragment-index="10"><img class="funky" src="images/funky-map-4.png"/></span>
+                        <span class="fragment disappear" data-fragment-index="6"><span class="fragment" data-fragment-index="2"><img class="funky" src="images/funky-map-1.png"/></span></span><span class="fragment disappear" data-fragment-index="7"><span class="fragment appear" data-fragment-index="6"><img class="funky" src="images/funky-map-2.png"/></span></span><span class="fragment disappear" data-fragment-index="8"><span class="fragment appear" data-fragment-index="7"><img class="funky" src="images/funky-map-3.png"/></span></span><span class="fragment appear" data-fragment-index="8"><img class="funky" src="images/funky-map-4.png"/></span>
                     </section>
                     <section data-background="images/bubble.svg">
                         <pre><code data-noescape class="haskell highlight-blue">staticPath :: FilePath -> IO FilePath
