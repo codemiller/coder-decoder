@@ -292,18 +292,23 @@ dbConn = <span class="fragment marker" data-fragment-index="1"><span class="frag
                         <div class="why">Provides concise, functional way of drilling down into data types to get or set</div>
                     </section>
                     <section>
-                        <pre><code data-noescape class="haskell highlight-green"><span class="fragment disappear" data-fragment-index="2"><span class="fragment" data-fragment-index="0">-- data Lens s a = Lens { set :: s -> a -> s, view :: s -> a }</span>
+                        <pre><code data-noescape class="haskell highlight-green"><span class="fragment disappear" data-fragment-index="2"><span class="fragment" data-fragment-index="0">-- data Lens target field = 
+--     Lens { 
+--         get :: target -> field,
+--         set :: target -> field -> target
+--     }</span>
 <span class="fragment" data-fragment-index="1">ghci> :info Lens
 type Lens s t a b = Functor f => (a -> f b) -> s -> f t
-...</span></span><span class="fragment appear" data-fragment-index="2">-- dog = Dog { _name = Name { _firstName = "Scooby", _lastName = "Da" } } 
+...</span></span><span class="fragment appear" data-fragment-index="2" style="background-color: inherit !important;"><span class="fragment appear" data-fragment-index="2">-- dog = Dog { _name = Name { _firstName = "Scooby", _lastName = "Da" } } 
 -- cat = Cat { _archEnemy = dog }
 -- mouse = Mouse { _food = "cheddar" }
- 
 </span>
+
 <span class="fragment appear" data-fragment-index="3">ghci> <span class="fragment disappear" data-fragment-index="9"><span class="fragment highlight-bg-green" data-fragment-index="4">cat^.archEnemy^.name^.firstName</span></span></span><span class="fragment appear" data-fragment-index="9">cat^.archEnemy^.name^.firstName</span>
 <span class="fragment appear" data-fragment-index="10">"Scooby"</span>
 <span class="fragment appear" data-fragment-index="12">ghci> set archEnemy mouse cat</span>
 <span class="fragment appear" data-fragment-index="13">Cat {_archEnemy = Mouse {_food = "cheddar"}}</span>
+</span>
 </code></pre>
                         <span class="fragment disappear" data-fragment-index="5"><span class="fragment" data-fragment-index="4"><img class="funky" src="images/funky-lens-1.png"/></span></span><span class="fragment disappear" data-fragment-index="6"><span class="fragment appear" data-fragment-index="5"><img class="funky" src="images/funky-lens-2.png"/></span></span><span class="fragment disappear" data-fragment-index="7"><span class="fragment appear" data-fragment-index="6"><img class="funky" src="images/funky-lens-3.png"/></span></span><span class="fragment disappear" data-fragment-index="8"><span class="fragment appear" data-fragment-index="7"><img class="funky" src="images/funky-lens-4.png"/></span></span><span class="fragment disappear" data-fragment-index="9"><span class="fragment appear" data-fragment-index="8"><img class="funky" src="images/funky-lens-5.png"/></span></span><span class="fragment disappear" data-fragment-index="10"><span class="fragment appear" data-fragment-index="9"><img class="funky" src="images/funky-lens-6.png"/></span></span><span class="fragment disappear" data-fragment-index="11"><span class="fragment appear" data-fragment-index="10"><img class="funky" src="images/funky-lens-7.png"/></span></span><span class="fragment appear" data-fragment-index="11"><img class="funky" src="images/funky-lens-8.png"/></span>
                     </section>
