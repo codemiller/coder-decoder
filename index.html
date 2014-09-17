@@ -263,8 +263,8 @@ staticPath dir = <span class="fragment marker" data-fragment-index="1">maybe dir
                     <section>
                         <pre><code data-noescape class="haskell highlight-green"><span class="fragment" data-fragment-index="0">ghci> :info Monad
 class Monad m where
-  <span class="fragment marker" data-fragment-index="6">(>>=) :: m a -> (a -> m b) -> m b</span>
   <span class="fragment marker" data-fragment-index="6">return :: a -> m a</span>
+  <span class="fragment marker" data-fragment-index="6">(>>=) :: m a -> (a -> m b) -> m b</span>
   ...</span>
 <span class="fragment" data-fragment-index="7">ghci> <span class="fragment marker" data-fragment-index="8">["walk","nap","fight"]</span> >>= <span class="fragment marker" data-fragment-index="9">(\t -> return <span class="fragment marker" data-fragment-index="10">("cat" ++ t)</span>)</span></span>
 <span class="fragment" data-fragment-index="11">["catwalk","catnap","catfight"]</span>
